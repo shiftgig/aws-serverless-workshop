@@ -32,7 +32,6 @@ functions:
         http:
           method: put
           path: "/product/{name}"
-          private: true
           request:
             parameters:
               paths:
