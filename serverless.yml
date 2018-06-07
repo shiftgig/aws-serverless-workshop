@@ -43,8 +43,6 @@ provider:
     quota:
       limit: 50000
       period: DAY
-    throttle:
-      rateLimit: 10
 
 functions:
   PutProduct:
@@ -81,7 +79,7 @@ functions:
     description: Gets a product
     memorySize: 128
     runtime: python3.6
-    handler: handlers.get_product__http
+    handler: handlers.delete_product__http
     events:
       -
         http:

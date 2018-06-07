@@ -40,7 +40,10 @@ def get_product__http(event, context):
         print('Could not find product {}'.format(product_name))
         return {
             'statusCode': '404',
-            'body': 'Product not found'
+            'body': json.dumps({'error': 'Product not found'}),
+            'headers': {
+                'Content-Type': 'application/json'
+            }
         }
     print('Retrieved product {}'.format(product_name))
 
