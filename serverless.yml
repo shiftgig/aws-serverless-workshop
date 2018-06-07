@@ -3,13 +3,8 @@ service: candystore
 plugins:
   - serverless-python-requirements  # Python only
 
-package:
-  exclude:
-    - node_modules/**
-
 custom:
   foo: bar
-  product_table_name: ${self:service}-${self:provider.stage}-product
   pythonRequirements: # Python only
     usePipenv: true
     dockerizePip: true
@@ -23,26 +18,8 @@ provider:
   logRetentionInDays: 7
   stackTags:
     SERVICE: ${self:service}
-  iamRoleStatements:
-    - 
-      Effect: Allow
-      Action:
-        - dynamodb:GetItem
-        - dynamodb:PutItem
-        - dynamodb:UpdateItem
-        - dynamodb:DeleteItem
-      Resource:
-        - 
-          Fn::GetAtt: [ "ProductDynamoDBTable", "Arn" ]
   environment:
     FOO_VALUE: ${self:custom.foo}
-    PRODUCT_TABLE_NAME: ${self:custom.product_table_name}
-  apiKeys:
-    - CashRegisterClient
-  usagePlan:
-    quota:
-      limit: 50000
-      period: DAY
 
 functions:
   PutProduct:
@@ -60,51 +37,21 @@ functions:
             parameters:
               paths:
                 name: true
-  GetProduct:
-    description: Gets a product
-    memorySize: 128
-    runtime: python3.6
-    handler: handlers.get_product__http
-    events:
-      -
-        http:
-          method: get
-          path: "/product/{name}"
-          private: true
-          request:
-            parameters:
-              paths:
-                name: true
-  DeleteProduct:
-    description: Gets a product
-    memorySize: 128
-    runtime: python3.6
-    handler: handlers.delete_product__http
-    events:
-      -
-        http:
-          method: delete
-          path: "/product/{name}"
-          private: true
-          request:
-            parameters:
-              paths:
-                name: true
 
-resources:
-  Resources:
-    ProductDynamoDBTable:
-      Type: "AWS::DynamoDB::Table"
-      Properties:
-        AttributeDefinitions:
-          -
-            AttributeName: name
-            AttributeType: S
-        KeySchema:
-          -
-            AttributeName: name
-            KeyType: HASH
-        TableName: ${self:custom.product_table_name}
-        ProvisionedThroughput:
-          ReadCapacityUnits: 1
-          WriteCapacityUnits: 1
+# resources:
+#   Resources:
+#     ProductDynamoDBTable:
+#       Type: "AWS::DynamoDB::Table"
+#       Properties:
+#         AttributeDefinitions:
+#           -
+#             AttributeName: name
+#             AttributeType: S
+#         KeySchema:
+#           -
+#             AttributeName: name
+#             KeyType: HASH
+#         TableName: ${self:custom.product_table_name}
+#         ProvisionedThroughput:
+#           ReadCapacityUnits: 1
+#           WriteCapacityUnits: 1
