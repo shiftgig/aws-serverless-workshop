@@ -62,6 +62,36 @@ functions:
             parameters:
               paths:
                 name: true
+  GetProduct:
+    description: Gets a product
+    memorySize: 128
+    runtime: python3.6
+    handler: handlers.get_product__http
+    events:
+      -
+        http:
+          method: get
+          path: "/product/{name}"
+          private: true
+          request:
+            parameters:
+              paths:
+                name: true
+  DeleteProduct:
+    description: Gets a product
+    memorySize: 128
+    runtime: python3.6
+    handler: handlers.get_product__http
+    events:
+      -
+        http:
+          method: delete
+          path: "/product/{name}"
+          private: true
+          request:
+            parameters:
+              paths:
+                name: true
 
 resources:
   Resources:
