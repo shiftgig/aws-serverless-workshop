@@ -22,3 +22,18 @@ branch. Additional functionality found on this branch includes:
 ## Contact
 
 You can get in touch with me via email: [tyler@shiftgig.com](mailto:tyler@shiftgig.com)
+
+
+## Useful Links
+
+* Serverless Framework:
+    * [Github repository](https://github.com/serverless/serverless)
+    * [Website](https://serverless.com/)
+* `serverless-python-requirements` plugin:
+    * [Github repository](https://github.com/UnitedIncome/serverless-python-requirements)
+* Shiftgig
+    * [Website](https://shiftgig.com)
+    * [Github](https://github.com/shiftgig)
+* Pipenv: Python Dev Workflow for Humans
+    * [Website](https://docs.pipenv.org/)
+    * [Github repository](https://github.com/pypa/pipenv)
