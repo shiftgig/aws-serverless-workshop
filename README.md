@@ -26,10 +26,10 @@ You can get in touch with me via email: [tyler@shiftgig.com](mailto:tyler@shiftg
 
 ## Useful Links
 
-* Serverless Framework:
+* Serverless Framework
     * [Github repository](https://github.com/serverless/serverless)
     * [Website](https://serverless.com/)
-* `serverless-python-requirements` plugin:
+* `serverless-python-requirements` plugin
     * [Github repository](https://github.com/UnitedIncome/serverless-python-requirements)
 * Shiftgig
     * [Website](https://shiftgig.com)
